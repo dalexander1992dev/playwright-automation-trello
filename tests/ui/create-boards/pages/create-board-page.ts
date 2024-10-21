@@ -3,11 +3,12 @@ import { CreateBoardLocators } from "../constants/create-board-ui-constants"
 
 
 export class CreateBoardPage {
-    readonly page: Page;
-    readonly boardTitleInput: Locator;
-    readonly createBoardButton: Locator;
+    private page: Page;
+    private boardTitleInput: Locator;
+    private createBoardButton: Locator;
 
     constructor(page: Page) {
+        this.page = page;
         this.boardTitleInput = page.locator(CreateBoardLocators.BOARD_TITLE_INPUT)
         this.createBoardButton = page.locator(CreateBoardLocators.CREATE_BOARD_BUTTON)
     }

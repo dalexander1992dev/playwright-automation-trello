@@ -39,7 +39,6 @@ export class BoardsApiHelper {
   
         try {
             const allBoardsInOrganizationRequest = await organizationsApiHelper.getBoardsInOrganization();
-            console.log('allBoardsInOrganizationRequest: ' + allBoardsInOrganizationRequest);
 
             const allBoardsResponseBody = await allBoardsInOrganizationRequest.json();
             for (let i = 0; i < allBoardsResponseBody.length; i++) {

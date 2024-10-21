@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { LoginPage } from '../../login/pages/login-page';
 import { HeaderPage } from '../../headers/pages/header-page';
 import { BoardsPage } from '../pages/boards-page';
@@ -16,12 +16,11 @@ test.describe('Boards Test Suite', () => {
         const loginPage = new LoginPage(page);
     
         await loginPage.login('cypresstrello@gmail.com', '123Queso!');
-        page.waitForEvent('load');
         await expect(page.locator('.boards-page-section-header-name')).toHaveText('YOUR WORKSPACES');
     });
 
     test.afterEach(async ({ }) => {
-        await boardsApiHelper.deleteAllBoards()
+        await boardsApiHelper.deleteAllBoards();
      });
   
     test('UI - Create Board', async ({ page }) => {
@@ -31,10 +30,15 @@ test.describe('Boards Test Suite', () => {
         const boardPage = new BoardsPage(page)
         const boardName = createBoardData.name
 
-        await headerPage.navigateToCreateBoard()
-
-        await  createBoardPage.createNewBoard(boardName)
-        await  boardPage.validateBoardTitleText(boardName)		    
+        try {
+            await headerPage.navigateToCreateBoard();
+            await createBoardPage.createNewBoard(boardName);
+            await boardPage.validateBoardTitleText(boardName);           
+        } catch (error) {
+            console.error('Error during test execution:', error);
+            throw error; // Re-throw the error to ensure the test fails
+        }	    
+        
     });
 
 });

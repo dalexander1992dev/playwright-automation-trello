@@ -1,8 +1,10 @@
 import { request, APIRequestContext } from '@playwright/test';
-
+import dotenv from 'dotenv';
+// Load the environment variables from the .env file
+dotenv.config();
 const baseUrl = "https://api.trello.com/";
-const apiKey =  "e5ba702016f58a8af68166685c519682";
-const apiToken = "ATTA8e60476baa3d31e2f3608e367cb836fa94debd439c86d154ea6718dd5d4a4fef6E316488";
+const apiKey =  process.env.TRELLO_API_KEY;
+const apiToken = process.env.TRELLO_API_TOKEN;
 
 export default class ApiCalls {
     private requestContext: APIRequestContext;
