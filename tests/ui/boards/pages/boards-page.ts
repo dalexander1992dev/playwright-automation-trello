@@ -2,15 +2,15 @@ import { expect, Locator, Page } from '@playwright/test';
 import { BoardsLocators } from '../constants/boards-ui-constants';
 
 export class BoardsPage {
-    readonly page: Page;
-    readonly boardTitleLabel: Locator;
+    private page: Page;
+    private boardTitleLabel: Locator;
 
     constructor(page: Page) {
+        this.page = page;
         this.boardTitleLabel = page.locator(BoardsLocators.BOARD_TITLE_LABEL)
-
     }
 
     async validateBoardTitleText(expectedText: string) {
-        expect(this.boardTitleLabel).toHaveText(expectedText)
+        await expect(this.boardTitleLabel).toHaveText(expectedText)
     }
 }
