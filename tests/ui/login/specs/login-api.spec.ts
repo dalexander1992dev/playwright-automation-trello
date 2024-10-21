@@ -11,8 +11,8 @@ test.describe('Login Test Suite', () => {
     await page.goto('https://trello.com/');
   
     const loginPage = new LoginPage(page);
-    const email = process.env.EMAIL;
-    const password = process.env.PASSWORD;
+    const email = process.env.TRELLO_EMAIL;
+    const password = process.env.TRELLO_PASSWORD;
 
     if (!email || !password) {
       throw new Error('Email or Password environment variables are not defined');

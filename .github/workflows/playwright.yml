@@ -20,8 +20,10 @@ jobs:
     - name: Run Playwright tests
       run: npm run dev-run
       env:
-          EMAIL: ${{ secrets.TRELLO_EMAIL }}
-          PASSWORD: ${{ secrets.TRELLO_PASSWORD }}
+          TRELLO_EMAIL: ${{ secrets.TRELLO_EMAIL }}
+          TRELLO_PASSWORD: ${{ secrets.TRELLO_PASSWORD }}
+          TRELLO_API_KEY: ${{ secrets.TRELLO_API_KEY }}
+          TRELLO_API_TOKEN: ${{ secrets.TRELLO_API_TOKEN }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

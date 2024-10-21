@@ -29,8 +29,10 @@ This project is designed to automate testing for Trello using Playwright. It pro
     ```
 5. Create a `.env` file in the root directory and add your environment variables:
     ```env
-    EMAIL=your-email@example.com
-    PASSWORD=your-password
+    TRELLO_EMAIL=your-email@example.com
+    TRELLO_PASSWORD=your-password
+    TRELLO_API_KEY=your-api-key
+    TRELLO_API_TOKEN=your-api-token
     ```
 
 ## Running Tests
