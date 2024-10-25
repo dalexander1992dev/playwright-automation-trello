@@ -7,16 +7,21 @@ import { BoardsApiHelper } from '../../../api/tests//boards/helpers/boards-api-h
 const boardsApiHelper = new BoardsApiHelper()
 
 import createBoardData from '../../../fixtures/api/boards/requestBody/board-create-body.json';
+import dotenv from 'dotenv';
 
+// Load the environment variables from the .env file
+dotenv.config();
 
 test.describe('Boards Test Suite', () => {
 
     test.beforeEach(async ({ page }) => {
         await page.goto('https://trello.com/');
         const loginPage = new LoginPage(page);
-    
-        await loginPage.login('cypresstrello@gmail.com', '123Queso!');
-        await expect(page.locator('.boards-page-section-header-name')).toHaveText('YOUR WORKSPACES');
+        const email = process.env.TRELLO_EMAIL!;
+        const password = process.env.TRELLO_PASSWORD!;
+
+        await loginPage.login(email, password);
+        await expect(page.locator('div.boards-page-board-section-header > h3')).toHaveText('Trello Workspace');
     });
 
     test.afterEach(async ({ }) => {
