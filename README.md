@@ -1,4 +1,4 @@
-# GL Playwright Automation Trello
+# Playwright Automation - Trello
 
 ## Overview
 
@@ -13,11 +13,11 @@ This project is designed to automate testing for Trello using Playwright. It pro
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/gl-playwright-automation-trello.git
+    git clone https://github.com/dalexander1992dev/playwright-automation-trello
     ```
 2. Navigate to the project directory:
     ```sh
-    cd gl-playwright-automation-trello
+    cd playwright-automation-trello
     ```
 3. Install the dependencies:
     ```sh
